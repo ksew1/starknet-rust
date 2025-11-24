@@ -1066,4 +1066,4 @@ async fn jsonrpc_batch() {
 
 // NOTE: `addXxxxTransaction` methods are harder to test here since they require signatures. These
 // are integration tests anyways, so we might as well just leave the job to th tests in
-// `starknet-accounts`.
+// `starknet-rust-accounts`.
