@@ -90,9 +90,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           changelog: CHANGELOG.md
           allow-missing-changelog: true
-          title: "v${{ needs.check-version.outputs.version }}"
-          ref: refs/heads/master
-          tag: "v${{ needs.check-version.outputs.version }}"
+          title: ${{ needs.check-version.outputs.version }}
+          ref: refs/tags/${{ needs.check-version.outputs.version }}
 
   publish-crates:
     name: "Publish to Crates.io"
@@ -146,3 +145,4 @@ jobs:
 
           echo "Publishing: Main Crate"
           cargo publish -p starknet-rust
+
