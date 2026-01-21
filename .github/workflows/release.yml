@@ -44,7 +44,7 @@ jobs:
 
       - name: Check if Tag already exists
         run: |
-          TAG="v${{ steps.check_version.outputs.version }}"
+          TAG="${{ steps.check_version.outputs.version }}"
           if git rev-parse "$TAG" >/dev/null 2>&1; then
             echo "Error: Tag $TAG already exists. Please bump Cargo.toml first."
             exit 1
@@ -95,7 +95,7 @@ jobs:
           changelog: CHANGELOG.md
           allow-missing-changelog: false
           title: ${{ needs.check-version.outputs.version }}
-          ref: ${{ github.sha }}
+          ref: refs/tags/${{ needs.check-version.outputs.version }}
 
   publish-crates:
     name: Publish to Crates.io
